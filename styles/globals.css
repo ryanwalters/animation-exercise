@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    @apply bg-slate-800 text-white;
+}
+
 /* @react-md/material-icons */
 
 .rmd-icon--svg {

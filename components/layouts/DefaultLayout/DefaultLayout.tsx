@@ -7,9 +7,7 @@ interface DefaultLayoutProps extends HTMLAttributes<HTMLElement> {}
 const DefaultLayout: FC<DefaultLayoutProps> = ({ children }) => (
   <div className={styles.DefaultLayout}>
     <Navbar />
-    <div className="container">
-      {children}
-    </div>
+    <div className="container mx-auto text-center p-5">{children}</div>
   </div>
 );
 
