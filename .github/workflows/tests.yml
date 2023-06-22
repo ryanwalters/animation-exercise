@@ -1,0 +1,7 @@
+name: Test
+
+on: push
+
+jobs:
+  unit-tests:
+    uses: ./.github/workflows/reusable_unit_tests.yml

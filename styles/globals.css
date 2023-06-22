@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @react-md/material-icons */
+
+.rmd-icon--svg {
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    font-size: var(--rmd-icon-size, 1.5rem);
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.rmd-icon--dense {
+    --rmd-icon-size: 1.25rem;
+}
