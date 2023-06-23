@@ -17,7 +17,9 @@ const GroupedList: FC<GroupedListProps> = () => {
         <Button onClick={() => setItems((prevItems) => [Math.random() * (150 - 50) + 50, ...prevItems])}>
           Add item
         </Button>
-        <Button>Remove item</Button>
+        <Button onClick={() => setItems((prevItems) => prevItems.filter((_, i, array) => i !== array.length - 1))}>
+          Remove item
+        </Button>
       </div>
       <AnimatePresence>
         <motion.div
