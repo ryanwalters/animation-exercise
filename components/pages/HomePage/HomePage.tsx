@@ -9,6 +9,7 @@ import BoxGroup from '~/shared/BoxGroup/BoxGroup';
  * - <Reorder> component: inline multi-line, css grid
  * - run animations in parallel
  * - dequeue animations running in parallel
+ * - https://medium.com/prod-io/sequencing-animations-in-reactjs-9ea0c4263fea
  */
 
 interface HomePageProps {}
@@ -18,7 +19,7 @@ const HomePage: FC<HomePageProps> = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(queue);
+    console.log({ animations: queue.animations, currentAnimation: queue.currentAnimation });
   }, [queue]);
 
   return (
