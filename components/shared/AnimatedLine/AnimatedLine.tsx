@@ -11,19 +11,13 @@ const AnimatedLine: FC<AnimatedLineProps> = () => {
   const { currentAnimation } = useSelector(selectQueue);
   const variants: AnimationVariants = {
     lineAcross: {
-      width: '100%',
-      transition: {
-        duration: 5,
-      },
-    },
-    lineFadeOut: {
-      opacity: 0,
+      width: 200,
     },
   };
 
   return (
     <motion.div
-      className="bg-green-500 w-0 h-1 rounded"
+      className="bg-green-500 h-1 rounded mt-2 w-0"
       variants={variants}
       animate={currentAnimation}
       onAnimationComplete={(animationDefinition: AnimationName) => {

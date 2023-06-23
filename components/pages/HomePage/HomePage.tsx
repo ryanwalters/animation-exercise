@@ -4,6 +4,13 @@ import { queueAnimation, selectQueue } from '~/redux/queueSlice';
 import AnimatedLine from '~/shared/AnimatedLine/AnimatedLine';
 import BoxGroup from '~/shared/BoxGroup/BoxGroup';
 
+/**
+ * Notes:
+ * - <Reorder> component: inline multi-line, css grid
+ * - run animations in parallel
+ * - dequeue animations running in parallel
+ */
+
 interface HomePageProps {}
 
 const HomePage: FC<HomePageProps> = () => {
@@ -15,14 +22,15 @@ const HomePage: FC<HomePageProps> = () => {
   }, [queue]);
 
   return (
-    <div className="text-center p-5">
+    <div className="flex flex-col justify-center items-center p-5">
       <div>
         <button
-          className="mr-3 bg-slate-500 hover:bg-slate-600 active:bg-slate-700 mb-4 p-3 rounded-lg"
-          onClick={() => dispatch(queueAnimation(['tilesIn', /*['lineAcross', 'lineFadeOut'],*/ 'tilesCombine']))}
+          className="bg-slate-500 hover:bg-slate-600 active:bg-slate-700 mb-4 p-3 rounded-lg mr-3"
+          onClick={() => dispatch(queueAnimation(['tilesIn', 'tilesCombine', 'lineAcross']))}
         >
           Animate!
         </button>
+        In queue: {queue.animations.length}
       </div>
       <BoxGroup />
       <AnimatedLine />
