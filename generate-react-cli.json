@@ -6,8 +6,8 @@
   "component": {
     "default": {
       "path": "components/shared",
-      "withStyle": true,
-      "withTest": true,
+      "withStyle": false,
+      "withTest": false,
       "withStory": false,
       "withLazy": false
     },

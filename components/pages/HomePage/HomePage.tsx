@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { queueAnimation, selectQueue } from '~/redux/queueSlice';
 import AnimatedLine from '~/shared/AnimatedLine/AnimatedLine';
 import BoxGroup from '~/shared/BoxGroup/BoxGroup';
+import Button from '~/shared/Button/Button';
+import GroupedList from '~/shared/GroupedList/GroupedList';
 
 /**
  * Notes:
@@ -25,16 +27,13 @@ const HomePage: FC<HomePageProps> = () => {
   return (
     <div className="flex flex-col justify-center items-center p-5">
       <div>
-        <button
-          className="bg-slate-500 hover:bg-slate-600 active:bg-slate-700 mb-4 p-3 rounded-lg mr-3"
-          onClick={() => dispatch(queueAnimation(['tilesIn', 'tilesCombine', 'lineAcross']))}
-        >
-          Animate!
-        </button>
+        <Button onClick={() => dispatch(queueAnimation(['tilesIn', 'tilesCombine', 'lineAcross']))}>Animate!</Button>
         In queue: {queue.animations.length}
       </div>
       <BoxGroup />
       <AnimatedLine />
+      <hr className="my-10 border-white w-[100%]" />
+      <GroupedList />
     </div>
   );
 };
