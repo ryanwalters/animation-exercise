@@ -1,26 +1,32 @@
-import React, { type FC, useState } from 'react';
-import DefaultLayout from '~/layouts/DefaultLayout/DefaultLayout';
+import React, { type FC, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { queueAnimation, selectQueue } from '~/redux/queueSlice';
+import AnimatedLine from '~/shared/AnimatedLine/AnimatedLine';
 import BoxGroup from '~/shared/BoxGroup/BoxGroup';
-import styles from './HomePage.module.scss';
 
 interface HomePageProps {}
 
 const HomePage: FC<HomePageProps> = () => {
-  const [variant, setVariant] = useState('default');
+  const queue = useSelector(selectQueue);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(queue);
+  }, [queue]);
 
   return (
-    <DefaultLayout className={styles.HomePage} data-testid="HomePage">
+    <div className="text-center p-5">
       <div>
         <button
           className="mr-3 bg-slate-500 hover:bg-slate-600 active:bg-slate-700 mb-4 p-3 rounded-lg"
-          onClick={() => setVariant('slideDown')}
+          onClick={() => dispatch(queueAnimation(['tilesIn', /*['lineAcross', 'lineFadeOut'],*/ 'tilesCombine']))}
         >
           Animate!
         </button>
-        <button onClick={() => setVariant('default')}>Reset</button>
       </div>
-      <BoxGroup variant={variant} />
-    </DefaultLayout>
+      <BoxGroup />
+      <AnimatedLine />
+    </div>
   );
 };
 

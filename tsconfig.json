@@ -18,7 +18,9 @@
     "paths": {
       "~/layouts/*": ["components/layouts/*"],
       "~/pages/*": ["components/pages/*"],
-      "~/shared/*": ["components/shared/*"]
+      "~/redux/*": ["redux/*"],
+      "~/shared/*": ["components/shared/*"],
+      "~/utils/*": ["utils/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

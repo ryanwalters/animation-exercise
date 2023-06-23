@@ -2,28 +2,28 @@ import { motion } from 'framer-motion';
 import type { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { dequeueAnimation, selectQueue } from '~/redux/queueSlice';
-import Box from '~/shared/Box/Box';
-import { AnimationName, type AnimationVariants } from '~/utils/types';
+import { AnimationName, AnimationVariants } from '~/utils/types';
 
-const NUMBER_OF_BOXES = 7;
-const boxLengthArray = Array(NUMBER_OF_BOXES).fill(1);
+interface AnimatedLineProps {}
 
-interface BoxGroupProps {}
-
-const BoxGroup: FC<BoxGroupProps> = () => {
-  const { currentAnimation } = useSelector(selectQueue);
+const AnimatedLine: FC<AnimatedLineProps> = () => {
   const dispatch = useDispatch();
+  const { currentAnimation } = useSelector(selectQueue);
   const variants: AnimationVariants = {
-    tilesIn: {
+    lineAcross: {
+      width: '100%',
       transition: {
-        staggerChildren: 0.1,
+        duration: 5,
       },
     },
-    tilesCombine: {},
+    lineFadeOut: {
+      opacity: 0,
+    },
   };
 
   return (
     <motion.div
+      className="bg-green-500 w-0 h-1 rounded"
       variants={variants}
       animate={currentAnimation}
       onAnimationComplete={(animationDefinition: AnimationName) => {
@@ -31,12 +31,8 @@ const BoxGroup: FC<BoxGroupProps> = () => {
           dispatch(dequeueAnimation());
         }
       }}
-    >
-      {boxLengthArray.map((_, i) => (
-        <Box key={i} index={i} totalBoxes={boxLengthArray.length} />
-      ))}
-    </motion.div>
+    />
   );
 };
 
-export default BoxGroup;
+export default AnimatedLine;
