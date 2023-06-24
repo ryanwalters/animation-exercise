@@ -6,6 +6,7 @@ export enum Animation {
   lineFadeOut = 'lineFadeOut',
   tilesIn = 'tilesIn',
   tilesCombine = 'tilesCombine',
+  itemDown = 'itemDown',
 }
 
 export type AnimationName = keyof typeof Animation;
